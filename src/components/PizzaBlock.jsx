@@ -26,7 +26,7 @@ const PizzaBlock = ({ title, price, imageUrl, sizes, types }) => {
           {sizes.map((size, i) => {
             return (
               <li
-                key={i}
+                key={size}
                 onClick={() => setActiveSize(size)}
                 className={activeSize === size ? 'active' : ''}>
                 {size}
