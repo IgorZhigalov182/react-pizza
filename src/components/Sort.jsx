@@ -5,6 +5,12 @@ const Sort = () => {
   const [selected, setSelected] = useState(0);
 
   const list = ['популярности', 'цене', 'алфавиту'];
+  const sortName = list[selected];
+
+  const handleActivePopup = (index) => {
+    setActivePopup(!activePopup);
+    setSelected(index);
+  };
 
   return (
     <div className="sort">
@@ -21,7 +27,7 @@ const Sort = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setActivePopup(!activePopup)}>популярности</span>
+        <span onClick={() => setActivePopup(!activePopup)}>{sortName}</span>
       </div>
       {activePopup && (
         <div className="sort__popup">
@@ -29,7 +35,7 @@ const Sort = () => {
             {list.map((item, index) => (
               <li
                 className={selected === index ? 'active' : ''}
-                onClick={() => setSelected(index)}
+                onClick={() => handleActivePopup(index)}
                 key={index}>
                 {item}
               </li>
